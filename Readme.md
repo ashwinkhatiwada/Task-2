@@ -21,7 +21,7 @@ npm i
 ## Run
 
 ```bash
-nodemon start
+npm start
 ```
 
 ## Compatibility
