@@ -11,7 +11,7 @@
 ## Installation
 
 ```bash
-git clone https://github.com/ashwinkhatiwada/task-1.git
+git clone https://github.com/ashwinkhatiwada/task-2.git
 ```
 
 ```bash
