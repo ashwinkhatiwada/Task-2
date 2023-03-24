@@ -1,1 +1,1 @@
-console.log(`agasga`);
+import axios from "axios";
