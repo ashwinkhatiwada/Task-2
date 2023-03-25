@@ -26,6 +26,50 @@ console.log(chalk.green(`12.Ceremonies `));
 console.log(chalk.yellow(`exit: Exit the program\n`))
 console.groupEnd();
 
+const showData = (item, name) => {
+    console.group();
+    console.log(chalk.hex('#4214d9')(`
+    ${name.toUpperCase()} in Valorant
+    Choose a number to see the details of the ${name}. \n`));
+
+    for (let i = 0; i < item.length; i++) {
+        console.log(chalk.green(`${i + 1}. ${item[i].name}`));
+    }
+    console.log(chalk.yellow(`exit: Exit the program\n`))
+    console.groupEnd();
+
+    rl.question(chalk.blue(`Please enter the name to know more about the ${name}: `), (answer) => {
+        const isAnswer = item.find((character) => character.name === answer);
+
+        if (answer == "exit" || answer === "Null UI Data!") {
+            console.log(chalk.green("Goodbye. see you soon!"));
+        }
+        else if (isAnswer) {
+            if (isAnswer.assetPath) {
+                console.log(chalk.hex('#87b9e8')(`
+                Name: ${isAnswer.name}
+                Id: ${isAnswer.id}
+                Asset Name: ${isAnswer.assetName}
+                Asset Path: ${isAnswer.assetPath}
+                `));
+            }
+            else {
+                console.log(chalk.hex('#87b9e8')(`
+                Name: ${isAnswer.name}
+                Id: ${isAnswer.id}
+                Asset Name: ${isAnswer.assetName}
+                `));
+            }
+        }
+        else {
+            console.log(chalk.yellow("Please enter a valid Name."));
+        }
+        rl.close();
+    })
+
+
+}
+
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -35,79 +79,51 @@ const rl = readline.createInterface({
 rl.question(chalk.blue("Please enter what you want to see: "), (answer) => {
     switch (answer) {
         case "1":
-            console.group();
-            console.log(chalk.hex('#4214d9')(`
-            Characters in valorant:
-            Choose a number to see the details of the character.`));
-
-            for (let i = 0; i < characters.length; i++) {
-                console.log(chalk.green(`${i + 1}. ${characters[i].name}`));
-            }
-            console.log(chalk.yellow(`exit: Exit the program\n`))
-            console.groupEnd();
-
-            rl.question(chalk.blue("Please enter the name to know more about the character: "), (answer) => {
-                const isAnswer = characters.find((character) => character.name === answer);
-
-                if (answer == "exit" || answer === "Null UI Data!") {
-                    console.log(chalk.green("Goodbye. see you soon!"));
-                }
-                else if (isAnswer) {
-                    console.log(chalk.hex('#87b9e8')(`
-                        Name: ${isAnswer.name}
-                        Id: ${isAnswer.id}
-                        Asset Name: ${isAnswer.assetName}
-                        `));
-                }
-                else {
-                    console.log(chalk.yellow("Please enter a valid Name."));
-                }
-                rl.close();
-            })
+            showData(characters, "characters");
             break;
 
         case "2":
-            console.log(skins);
+            showData(skins, 'skins');
             break;
 
         case "3":
-            console.log(maps);
+            showData(maps, 'maps');
             break;
 
         case "4":
-            console.log(chromas);
+            showData(chromas, 'chromas');
             break;
 
         case "5":
-            console.log(skinLevels);
+            showData(skinLevels, 'skin levels');
             break;
 
         case "6":
-            console.log(equips);
+            showData(equips, 'equips');
             break;
 
         case "7":
-            console.log(gameModes);
+            showData(gameModes, 'game modes');
             break;
 
         case "8":
-            console.log(sprays);
+            showData(sprays, 'sprays');
             break;
 
         case "9":
-            console.log(sprayLevels);
+            showData(sprayLevels, 'spray levels');
             break;
 
         case "10":
-            console.log(playerCards);
+            showData(playerCards, 'player cards');
             break;
 
         case "11":
-            console.log(playerTitles);
+            showData(playerTitles, 'player titles');
             break;
 
         case "12":
-            console.log(ceremonies);
+            showData(ceremonies, 'ceremonies');
             break;
 
         case "exit":
@@ -118,5 +134,4 @@ rl.question(chalk.blue("Please enter what you want to see: "), (answer) => {
             console.log(chalk.yellow("Please enter a valid number."));
             break;
     }
-    // rl.close();
 })
