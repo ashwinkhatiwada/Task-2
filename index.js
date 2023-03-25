@@ -1,37 +1,7 @@
-import axios from "axios";
-import dotenv from "dotenv";
-import fs from "fs";
+import datas from "./getData.js";
 import chalk from "chalk";
-dotenv.config();
-
-const riotApi = process.env.API_URL;
-const baseUrl = "https://eu.api.riotgames.com/val/content/v1/contents"
-
-let datas;
-const getData = async () => {
-    const url = `${baseUrl}?api_key=${riotApi}`;
-    try {
-        const response = await axios.get(url)
-            .then((res) => {
-
-                if (res.status === 429) {               // if api exceeds the limit, read the data from the file
-                    const readData = JSON.parse(fs.readFileSync("output.json"));
-                    datas = readData;
-                    return
-                }
-                else {
-                    datas = (res.data);
-                    return
-                }
-            })
-    } catch (error) {
-        console.error
-    }
-}
-await getData();
 
 const { characters, skins, maps, chromas, skinLevels, equips, gameModes, sprays, sprayLevels, playerCards, playerTitles, ceremonies } = datas
-
 
 console.group();
 console.log(chalk.red(`WELCOME TO VALORANT.
