@@ -8,7 +8,7 @@ const baseUrl = "https://eu.api.riotgames.com/val/content/v1/contents"
 
 const getData = async () => {
     let datas;
-    const url = `https://eu.api.riotgames.com/val/content/v1/contents?api_key=RGAPI-265f05c9-b04a-4111-bad1-d127cf7fdf11`;
+    const url = `https://eu.api.riotgames.com/val/content/v1/contents?api_key=${riotApi}`;
     try {
         const response = await axios.get(url)
         console.log(response.status)
