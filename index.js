@@ -35,6 +35,7 @@ const showData = (item, name) => {
     ${name.toUpperCase()} in Valorant
     Choose a number to see the details of the ${name}. \n`));
 
+    // show the names of the items
     for (let i = 0; i < item.length; i++) {
         console.log(chalk.green(`${i + 1}. ${item[i].name}`));
     }
@@ -47,6 +48,8 @@ const showData = (item, name) => {
         if (answer == "exit" || answer === "Null UI Data!") {
             console.log(chalk.green("Goodbye. see you soon!"));
         }
+
+        // if the answer is not null, show the data
         else if (isAnswer) {
             if (isAnswer.assetPath) {
                 console.log(chalk.hex('#87b9e8')(`
