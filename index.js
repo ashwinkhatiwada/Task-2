@@ -33,3 +33,65 @@ const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
+
+rl.question(chalk.blue("Please enter a number for what you want to know: "), (answer) => {
+
+    switch (answer) {
+        case "1":
+            console.log(`asasgga`)
+            break;
+
+        case "2":
+            console.log(`2`)
+            break;
+
+        case "3":
+            console.log(`3`)
+            break;
+
+        case "4":
+            console.log(`4`)
+            break;
+
+        case "5":
+            console.log(`5`)
+            break;
+
+        case "6":
+            console.log(`6`)
+            break;
+
+        case "7":
+            console.log(`7`)
+            break;
+
+        case "8":
+            console.log(`8`)
+            break;
+
+        case "9":
+            console.log(`9`)
+            break;
+
+        case "10":
+            console.log(`10`)
+            break;
+
+        case "11":
+            console.log(`11`)
+            break;
+
+        case "12":
+            console.log(`12`)
+            break;
+
+        case "exit":
+            console.log(chalk.green("Exiting the program..."));
+            break;
+
+        default:
+            console.log(chalk.yellow("Please enter a valid number."));
+            break;
+    }
+    rl.close();
+});
