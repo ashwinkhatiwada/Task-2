@@ -3,6 +3,7 @@ import chalk from "chalk";
 import readline from "readline";
 
 console.log(datas)
+
 const { characters, skins, maps, chromas, skinLevels, equips, gameModes, sprays, sprayLevels, playerCards, playerTitles, ceremonies } = datas
 
 console.group();
@@ -54,6 +55,7 @@ const showData = (item, name) => {
                 Id: ${isAnswer.id}
                 Asset Name: ${isAnswer.assetName}
                 Asset Path: ${isAnswer.assetPath}
+                Local Name: ${JSON.stringify(isAnswer.localizedNames)}
                 `));
             }
             else {
@@ -61,6 +63,7 @@ const showData = (item, name) => {
                 Name: ${isAnswer.name}
                 Id: ${isAnswer.id}
                 Asset Name: ${isAnswer.assetName}
+                Local Name: ${JSON.stringify(isAnswer.localizedNames)}
                 `));
             }
         }
