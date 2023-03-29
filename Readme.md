@@ -18,6 +18,10 @@ git clone https://github.com/ashwinkhatiwada/task-2.git
 npm i
 ```
 
+- Create your role and get your API key from [Riot Games](https://developer.riotgames.com/).
+- Create a file named `.env` in the root directory.
+- Add your API into `.env` file API_URL=`your API`
+
 ## Run
 
 ```bash
