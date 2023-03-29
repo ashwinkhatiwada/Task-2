@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import fs from "fs";
 dotenv.config();
 
-const riotApi = process.env.API_URL;
+const riotApi = process.env.API_KEY;
 const baseUrl = "https://eu.api.riotgames.com/val/content/v1/contents"
 
 const getData = async () => {
