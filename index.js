@@ -6,8 +6,8 @@ dotenv.config();
 const riotApi = process.env.API_URL;
 const baseUrl = "https://eu.api.riotgames.com/val/content/v1/contents"
 
-let datas;
 const getData = async () => {
+    let datas;
     const url = `${baseUrl}?api_key=${riotApi}`;
     try {
         const response = await axios.get(url)
@@ -15,14 +15,13 @@ const getData = async () => {
 
         if (response.status === 200) {               // if api is working, write the data to the file
             datas = await response.data;
-            return
+            return datas
         }
 
         else if (res.status === 429) {               // if api exceeds the limit, read the data from the file
             const readData = JSON.parse(fs.readFileSync("output.json"));
             datas = readData;
-
-            return
+            return datas
         }
         else {
             console.error
@@ -31,7 +30,9 @@ const getData = async () => {
         console.error
     }
 }
-await getData();
 
-console.log(datas)
-const { characters, skins, maps, chromas, skinLevels, equips, gameModes, sprays, sprayLevels, playerCards, playerTitles, ceremonies } = datas
+const data = await getData();
+
+const { characters, skins, maps, chromas, skinLevels, equips, gameModes, sprays, sprayLevels, playerCards, playerTitles, ceremonies } = data
+
+console.log(characters)
