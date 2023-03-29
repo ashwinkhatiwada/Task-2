@@ -11,15 +11,17 @@ const getData = async () => {
     const url = `${baseUrl}?api_key=${riotApi}`;
     try {
         const response = await axios.get(url)
+        console.log(response.status)
 
-        if (res.status === 429) {               // if api exceeds the limit, read the data from the file
-            const readData = JSON.parse(fs.readFileSync("output.json"));
-            datas = readData;
+        if (response.status === 200) {               // if api is working, write the data to the file
+            datas = await response.data;
             return
         }
 
-        if (res.status === 200) {               // if api is working, write the data to the file
-            datas = (res.data);
+        else if (res.status === 429) {               // if api exceeds the limit, read the data from the file
+            const readData = JSON.parse(fs.readFileSync("output.json"));
+            datas = readData;
+
             return
         }
         else {
@@ -29,6 +31,7 @@ const getData = async () => {
         console.error
     }
 }
-getData();
+await getData();
 
+console.log(datas)
 const { characters, skins, maps, chromas, skinLevels, equips, gameModes, sprays, sprayLevels, playerCards, playerTitles, ceremonies } = datas
