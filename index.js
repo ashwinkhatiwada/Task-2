@@ -26,6 +26,8 @@ console.log(chalk.green(`12.Ceremonies `));
 console.log(chalk.yellow(`exit: Exit the program\n`))
 console.groupEnd();
 
+
+// since the data has the same properties, create a function to show the data
 const showData = (item, name) => {
     console.group();
     console.log(chalk.hex('#4214d9')(`
@@ -70,7 +72,7 @@ const showData = (item, name) => {
 
 }
 
-
+// create a readline interface to get the user input and show the data
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
