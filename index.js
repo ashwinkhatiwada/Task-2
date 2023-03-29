@@ -28,70 +28,117 @@ console.log(chalk.yellow(`exit: Exit the program\n`))
 console.groupEnd();
 
 
+// since the data has the same properties, create a function to show the data
+const showData = (item, name) => {
+    console.group();
+    console.log(chalk.hex('#4214d9')(`
+    ${name.toUpperCase()} in Valorant
+    Choose a number to see the details of the ${name}. \n`));
+
+    for (let i = 0; i < item.length; i++) {
+        console.log(chalk.green(`${i + 1}. ${item[i].name}`));
+    }
+    console.log(chalk.yellow(`exit: Exit the program\n`))
+    console.groupEnd();
+
+    rl.question(chalk.blue(`Please enter the name to know more about the ${name}: `), (answer) => {
+        const isAnswer = item.find((character) => character.name === answer);
+
+        if (answer == "exit" || answer === "Null UI Data!") {
+            console.log(chalk.green("Goodbye. see you soon!"));
+        }
+        else if (isAnswer) {
+            if (isAnswer.assetPath) {
+                console.log(chalk.hex('#87b9e8')(`
+                Name: ${isAnswer.name}
+                Id: ${isAnswer.id}
+                Asset Name: ${isAnswer.assetName}
+                Asset Path: ${isAnswer.assetPath}
+                Local Name: ${JSON.stringify(isAnswer.localizedNames)}
+                `));
+                console.log(chalk.yellow("press ctrl + c to exit the program."))
+            }
+            else {
+                console.log(chalk.hex('#87b9e8')(`
+                Name: ${isAnswer.name}
+                Id: ${isAnswer.id}
+                Asset Name: ${isAnswer.assetName}
+                Local Name: ${JSON.stringify(isAnswer.localizedNames)}
+                `));
+                console.log(chalk.yellow("press ctrl + c to exit the program."))
+            }
+        }
+        else {
+            console.log(chalk.yellow("Please enter a valid Name."));
+        }
+        rl.close();
+    })
+
+
+}
+
 // create a readline interface to get the user input and show the data
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
-rl.question(chalk.blue("Please enter a number for what you want to know: "), (answer) => {
-
+rl.question(chalk.blue("Please enter what you want to see: "), (answer) => {
     switch (answer) {
         case "1":
-            console.log(`asasgga`)
+            showData(characters, "characters");
             break;
 
         case "2":
-            console.log(`2`)
+            showData(skins, 'skins');
             break;
 
         case "3":
-            console.log(`3`)
+            showData(maps, 'maps');
             break;
 
         case "4":
-            console.log(`4`)
+            showData(chromas, 'chromas');
             break;
 
         case "5":
-            console.log(`5`)
+            showData(skinLevels, 'skin levels');
             break;
 
         case "6":
-            console.log(`6`)
+            showData(equips, 'equips');
             break;
 
         case "7":
-            console.log(`7`)
+            showData(gameModes, 'game modes');
             break;
 
         case "8":
-            console.log(`8`)
+            showData(sprays, 'sprays');
             break;
 
         case "9":
-            console.log(`9`)
+            showData(sprayLevels, 'spray levels');
             break;
 
         case "10":
-            console.log(`10`)
+            showData(playerCards, 'player cards');
             break;
 
         case "11":
-            console.log(`11`)
+            showData(playerTitles, 'player titles');
             break;
 
         case "12":
-            console.log(`12`)
+            showData(ceremonies, 'ceremonies');
             break;
 
         case "exit":
-            console.log(chalk.green("Exiting the program..."));
+            console.log(chalk.green("Goodbye. see you soon!"));
             break;
 
         default:
             console.log(chalk.yellow("Please enter a valid number."));
             break;
     }
-    rl.close();
-});
+})
