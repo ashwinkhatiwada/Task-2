@@ -2,6 +2,7 @@ import datas from "./getData.js";
 import chalk from "chalk";
 import readline from "readline";
 
+console.log(datas)
 const { characters, skins, maps, chromas, skinLevels, equips, gameModes, sprays, sprayLevels, playerCards, playerTitles, ceremonies } = datas
 
 console.group();
