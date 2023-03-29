@@ -11,7 +11,6 @@ const getData = async () => {
     const url = `${baseUrl}?api_key=${riotApi}`;
     try {
         const response = await axios.get(url)
-        console.log(response.status)
 
         if (response.status === 200) {               // if api is working, write the data to the file
             datas = await response.data;
