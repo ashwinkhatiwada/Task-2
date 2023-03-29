@@ -18,7 +18,7 @@ const getData = async () => {
             return datas
         }
 
-        else if (res.status === 429) {               // if api exceeds the limit, read the data from the file
+        else if (response.status === 429) {               // if api exceeds the limit, read the data from the file
             const readData = JSON.parse(fs.readFileSync("output.json"));
             datas = readData;
             return datas
