@@ -26,3 +26,10 @@ console.log(chalk.green(`11.Player Titles`));
 console.log(chalk.green(`12.Ceremonies `));
 console.log(chalk.yellow(`exit: Exit the program\n`))
 console.groupEnd();
+
+
+// create a readline interface to get the user input and show the data
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
